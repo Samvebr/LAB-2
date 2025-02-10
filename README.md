@@ -108,3 +108,4 @@ Estadísticas para EMG:
   en electromiografia nos ayuda a identificar patrones de activación, relacionados a diferentes patologias.
 
 ### Grafica de la transformada.
+### Estadisticos de la transformada.
