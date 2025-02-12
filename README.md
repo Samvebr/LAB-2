@@ -242,7 +242,11 @@ En el caso de la mediana la instruccion *np.cumsum(fft_magnitud)* calcula la sum
 cumsum = np.cumsum(fft_magnitude)
 frec_mediana = frequencies[np.where(cumsum >= cumsum[-1]/2)[0][0]]
 ```
+
+
 La desviacion estandar con la instrucción (fft_magnitude * (frequencies - frec_media)**2) en la cual multiplica la diferencia cuadrada por la magnitu de la transformada de Fourier para ponderar las diferencias dependiendo de cada frecuencia a la señal, con *sum* se suman todos los datos ponderados y se divide por la suma total de las magnitudes y con *np.sqrt(varinza)* la raiz cuadrada obtenida en la formula y se presentan los datos en pantalla.
+
+
 ```bash
 # Desviación Estándar
 varianza = np.sum(fft_magnitude * (frequencies - frec_media)**2)/np.sum(fft_magnitude)
@@ -255,7 +259,7 @@ print(f"• Frecuencia Media: {frec_media:.2f} Hz")
 print(f"• Frecuencia Mediana: {frec_mediana:.2f} Hz")
 print(f"• Desviación Estándar: {desviacion:.2f} Hz")
 print("-"*50 + "\n")
-```
+`````
 
 Del codigo anterior se obtivieron los siguientes datos estadisticos:
 • Frecuencia Media: 696.39 Hz
@@ -275,13 +279,16 @@ plt.grid()
 plt.xlim(0, 500)
 plt.tight_layout()
 plt.show()
-```
+`````
 
 
 Se obtuvo la siguiente grafica.
 
+![image](https://github.com/user-attachments/assets/80502e72-3e53-4586-b9d6-45af0820f691)
 
-![image](https://github.com/user-attachments/assets/9a370021-604d-4a91-87bc-aaa78205dbfc)
+
+
+
 
 
 
