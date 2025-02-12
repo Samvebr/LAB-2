@@ -225,6 +225,7 @@ channel_data = limited_signal[:, 0]
 
 ### Transformada de Fourier Y Densidad Espectral 
 **Transformada Rapida DE Fourier (FFT)**
+
 Esta nos permite convertir una señal del dominio del tiempo al dominio de la frecuencia, util para saber que frecuencias componen una señal,
 en el caso de la medicina y la ingeniera biomedica, es fundamental en la identificación de patrones anormales, mas especificamente en electromiografia nos ayuda a identificar patrones de activación, relacionados a diferentes patologias.
 
@@ -241,6 +242,7 @@ fft_magnitude = np.abs(fft_signal[:half_N])/half_N
 frequencies = frequencies[:half_N]
 ````
 **Densidad Espectral**
+
 La PSD describe la distribucion de la energia o potencia en función de una señal para esto  se grafica la densidad espectral derivada de la Transformada de Fourier con la funcion plt.semilogy que calcula la densidad espectral de potencia utilizando el metodo de Welch y se divide la señal en con el parametro *nperseg=1024* que divide la señal en segmentos de 1024 muestras.
 
 Posteriormente se grafica el espectro de Fourier con el comando *plt.plot* y de parametros la frequencia y la magnitud normalizada, ademas se colocaron los nombres de los ejes.Dando como resultado la siguiente grafica.
