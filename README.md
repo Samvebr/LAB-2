@@ -163,9 +163,9 @@ print(df)
 print(f"\n Correlación de Pearson entre seno y coseno: {correlation_coefficient:.4f}")
 ```
 Obteniendo los siguientes resultados:
-
+<p align="center">
 ![image](https://github.com/user-attachments/assets/7a75e91d-6d6f-45f5-84b5-148df67b95b1)
-
+</p>
 Correlación de Pearson entre seno y coseno: 0.0000
 Puesto que la correclacion es 0.000 significa que no hay relacion lineal. Despues se toman los valores de la tabla anterior y se grafican las señales con el comando *stem* para la señal discreta posterioemente se establece el tamaño *plt.figure(figsize)*, las funciones a graficar *plt.stem* y las etiquetas de los ejes y del titulo, como se presenta a continuación.
 
