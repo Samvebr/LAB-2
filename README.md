@@ -173,29 +173,44 @@ Puesto que la correclacion es 0.000 significa que no hay relacion lineal. Despue
 
 Como se observa en el gráfico y en el coeficiente de correlación de Pearson es 0.000 esto se debe a que las dos señales estan desfasadas 90°, estadisticamente los cambios en una señal no estan relacionados linealmente con los cambios en la otra. 
 
+### Señal De Electromiografía (EMG)
 
+En la base de datos de Physionet se escogió la señal “emg_neuropathy.dat” y “a04.emg_neuropathy” del estudio "Examples of Electromyograms", para que el código pueda leer correctamente los archivos es necesario que se encuentren dentro de la misma carpeta del proyecto.
 
-
-### Grafica de la señal.
-
-- En la base de datos de Physionet se escogió la señal “emg_neuropathy.dat” y “a04.emg_neuropathy” del estudio "Examples of Electromyograms", para que el código pueda leer correctamente los archivos es necesario que se encuentren dentro de la misma carpeta del proyecto.
-
-- Posteriormente se agregaron las bibliotecas “wfdb”; lee los registros de las señales fisiológicas de formatos .dat y .hea, y extrae la frecuencia de muestreo y los nombres de los canales, “pandas”; se emplea para organizar datos el DataFrame, “matplotlib.pyplot”; graficar señales e histogramas., “numpy”; cálculos matemáticos y generación de ruido y “scipy.stats”; modelo estadístico y distribución normal.
+Posteriormente se agregaron las bibliotecas “wfdb”; lee los registros de las señales fisiológicas de formatos .dat y .hea, y extrae la frecuencia de muestreo y los nombres de los canales, “pandas”; se emplea para organizar datos el DataFrame, “matplotlib.pyplot”; graficar señales e histogramas., “numpy”; cálculos matemáticos y generación de ruido y “scipy.signal”; se utiliza para calcular la correlación entre dos secuencias unidimensionales.
 
 ```bash
 import wfdb
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy.stats import norm
+from scipy.signal import welch
 ```
-- Para gráficar la señal se empieza colocando el nombre del archivo en la variable nombre_registro y el tiempo que se desea a analizar y graficar, para nuestro caso 10s.
+Para gráficar la señal se empieza colocando el nombre del archivo en la variable nombre_registro.
 
 ```bash
 nombre_registo ='emg_neuropathy'
-tiempo_max = 10 #Analiza los primeros 10 segundos
 ```
-- Se lee la señal original mediante la función leer_senal(nombre_registro) y se estable el tiempo máximo de muestreo y se almacena en la variable muestras_max.
+Se leen los datos de la señal con ayuda de la biblioteca *wfdb* para procesar registros de datos fisiologicos con *rdrecord(record_name)* se carag el registro, *signal* señal analogica en formato de matriz, *fs* es la frecuencia de muestreo, se especifica en canal con la variables *canales* y la *duracion* calcula la duración total en segundos. Despues se muestra la informacion del archivo en pantalla.
+```bash
+# Leer los datos de la señal y encabezado
+record = wfdb.rdrecord(record_name)
+signal = record.p_signal
+fs = record.fs
+canales = record.sig_name
+duracion = len(signal) / fs
+
+# Mostrar información del archivo
+print("\n" + "="*50)
+print("Información de la señal:")
+print(f"• Frecuencia de muestreo: {fs} Hz")
+print(f"• Duración total: {duracion:.2f} segundos")
+print(f"• Canales disponibles: {canales}")
+print("="*50)
+```
+
+
+Se lee la señal original mediante la función leer_senal(nombre_registro) y se estable el tiempo máximo de muestreo y se almacena en la variable muestras_max.
 
 ```bash
 senal, fs, canales, tiempo, df= leer_senal(nombre_registro)
