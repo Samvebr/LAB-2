@@ -277,5 +277,7 @@ plt.show()
 ```
 Se obtuvo la siguiente grafica.
 
-![image](https://github.com/user-attachments/assets/68b2647e-3f4a-4fe0-8b50-ab29a46fa6dd)
+![image](https://github.com/user-attachments/assets/9a370021-604d-4a91-87bc-aaa78205dbfc)
+
+
 
