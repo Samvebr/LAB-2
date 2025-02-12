@@ -14,6 +14,7 @@ Se escogio como el sistema *h[n]* cada dígito del código de cada estudiante y 
 
 ### Valores De La Convolución y Grafica (a Mano)
 Para el calculo se multiplicaron cada una de las filas por las columnas y posteriormente se sumaron los datos en diagonales, obteniendo al final 15 valores para la convolucion *y[n]*. Al elaborar la grafica se tomo como eje x la cantidad de datos obtenidos, es decir, 15 datos y como eje x los valores de la señal *y[n]*.
+
 **Convolución de Samuel E. Velandia**
 ![Imagen de WhatsApp 2025-02-05 a las 11 44 38_65214d87](https://github.com/user-attachments/assets/01c5b06f-6195-40f2-8c51-f8ac9c71529e)
 
