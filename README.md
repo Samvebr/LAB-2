@@ -229,7 +229,7 @@ en el caso de la medicina y la ingeniera biomedica, es fundamental en la identif
 
 
 ### Estadisticos Descriptivos en Función de la Frecuencia
-Para esta parte del laboratorio se calcuraron los estadisticos descriptivos en función de la frecuencia, es decir, se calculo la media, la mediana, la desviacione estandar y el Hostograma de frecuencias.
+Para esta parte del laboratorio se calcuraron los estadisticos descriptivos en función de la frecuencia, es decir, se calculo la media, la mediana, la desviacione estandar y el Histograma de frecuencias.
 
 Para la media se suma todas las frecuencias *frequencies * fft_magnitude*, dadno un valor ponderado de las frecuencias y se dibide por la suma total de las magnitudes *fft_magnitude*
 ```bash
@@ -256,9 +256,26 @@ print(f"• Frecuencia Mediana: {frec_mediana:.2f} Hz")
 print(f"• Desviación Estándar: {desviacion:.2f} Hz")
 print("-"*50 + "\n")
 ```
-
 Del codigo anterior se obtivieron los siguientes datos estadisticos:
 • Frecuencia Media: 696.39 Hz
 • Frecuencia Mediana: 573.80 Hz
 • Desviación Estándar: 514.00 Hz
+
+A fin de conseguir el histograma para visualizar la distrubución de frecuencias de la señal en el dominio de la misma, empleando los datos de las magnitudes obtenidas de la transformada de Fourier, se adecuo el tamño de grafica y con *plt.hist* se establecieron los parametros de *frequencie* que corresponde a cada punto de la magnitud de la transformada, *bins* define el numero total de intervalos y *weights=fft_magnitude* que pondera las barras del histograma de acuerdo a la magnitud de la transformada.
+
+```bash
+plt.figure(figsize=(12, 6))
+plt.hist(frequencies, bins=200, weights=fft_magnitude, 
+         edgecolor='k', alpha=0.7)
+plt.title('Distribución de Frecuencias')
+plt.xlabel('Frecuencia (Hz)')
+plt.ylabel('Densidad')
+plt.grid()
+plt.xlim(0, 500)
+plt.tight_layout()
+plt.show()
+```
+Se obtuvo la siguiente grafica.
+
+![image](https://github.com/user-attachments/assets/68b2647e-3f4a-4fe0-8b50-ab29a46fa6dd)
 
