@@ -3,9 +3,9 @@
 ## Justificación
 ### ¿Qué es una electromiografía?
 
-- Un electromiograma (EMG) es una prueba clínica común que se utiliza para evaluar la función de los músculos y los nervios que los controlan. Los estudios EMG se utilizan para ayudar en el diagnóstico y tratamiento de trastornos como las distrofias musculares y las neuropatías. Los estudios de conducción nerviosa que miden qué tan bien y qué tan rápido los nervios conducen los impulsos a menudo se realizan junto con estudios EMG.
+Un electromiograma (EMG) es una prueba clínica común que se utiliza para evaluar la función de los músculos y los nervios que los controlan. Los estudios EMG se utilizan para ayudar en el diagnóstico y tratamiento de trastornos como las distrofias musculares y las neuropatías. Los estudios de conducción nerviosa que miden qué tan bien y qué tan rápido los nervios conducen los impulsos a menudo se realizan junto con estudios EMG.
 
-- En este caso se muestra un hombre de 62 años con dolor lumbar crónico y neuropatía debido a una radiculopatía L5 derecha.
+En este caso se muestra un hombre de 62 años con dolor lumbar crónico y neuropatía debido a una radiculopatía L5 derecha.
 ### Metodo de adquisición
 
 - Se colocó un electrodo de aguja concéntrica de 25 mm en el músculo tibial anterior de cada sujeto. Luego se pidió al paciente que flexionara suavemente el pie contra resistencia. El electrodo de aguja se reposicionó hasta que se identificaron potenciales de la unidad motora con un tiempo de aumento rápido. Luego se recogieron datos durante varios segundos, momento en el que se pidió al paciente que se relajara y se retiró la aguja.
@@ -16,13 +16,17 @@ Se escogio como el sistema *h[n]* cada dígito del código de cada estudiante y 
 Para el calculo se multiplicaron cada una de las filas por las columnas y posteriormente se sumaron los datos en diagonales, obteniendo al final 15 valores para la convolucion *y[n]*. Al elaborar la grafica se tomo como eje x la cantidad de datos obtenidos, es decir, 15 datos y como eje x los valores de la señal *y[n]*.
 
 **Convolución de Samuel E. Velandia**
+
+
 ![Imagen de WhatsApp 2025-02-05 a las 11 44 38_65214d87](https://github.com/user-attachments/assets/01c5b06f-6195-40f2-8c51-f8ac9c71529e)
 
 **Convolución de Santiago E. Diaz**
+
 ![image](https://github.com/user-attachments/assets/cb7af520-97fd-4925-8fe7-8069e3184d38)
 ![image](https://github.com/user-attachments/assets/5f6c43dd-1f94-4bef-978e-5eb9b4f80491)
 
 **Convolución de Salome Ortega**
+
 ![image](https://github.com/user-attachments/assets/7c078541-92dc-42aa-9b91-81dec51f5f84)
 ![image](https://github.com/user-attachments/assets/a22bcc9d-5a65-4ecc-82d2-4de8dc2b4818)
 
@@ -33,11 +37,81 @@ Se emplearon las bibliotecas *matplotlib.pyplot* y *numpy*, la primera cumple la
 ```bash
 import matplotlib.pyplot as plt
 import numpy as np
-
 ```
+Posteriormente se crearon las variables array de la matriz de entrada (codigo) y la matriz de convolucion (cedula), para cada uno de los tres estudiantes, con ayuda de la funcion *np.convolve* que maneja como parametros la matriz de entrada y la de convolucion, y *mode=full* para que muestre todos los datos obtenidos.
+
+```bash
+#Matriz de entrada
+codigo_salo=np.array([5,6,0,0,7,5,3])
+codigo_samu=np.array([5,6,0,0,7,7,7])
+codigo_santi=np.array([5,6,0,0,7,5,5])
+#Matriz de convolucion
+cedula_salo=np.array([1,0,1,3,2,5,9,8,3,4])
+cedula_santi=np.array([1,0,9,7,7,8,2,7,2,6])
+cedula_samu=np.array([1,0,7,1,1,4,2,2,5,1])
+#Convolucion 
+con_salo=np.convolve(codigo_salo,cedula_salo,mode='full') 
+con_santi=np.convolve(codigo_santi,cedula_santi,mode='full')
+con_samu=np.convolve(codigo_samu,cedula_samu,mode='full')
+```
+Se imprimen los vectores en pantalla utilizando el comando *print*, los cuales dan como resultado:
+- Los valores de la convolución de Samuel:  [  5  6  35  47  18  33  90  78 100  77  55  56  63  56  42   7]
+- Los valores de la convolución de Santiago:  [  5   6  45  89  84  87 126 141 181 168 125  99  59  87  40  30]
+- Los valores de la convolución de Salome:  [  5   6   5  21  35  42  85 120  95  92 118 116  88  67  29  12]
+
+```bash
+print('Los valores de la convolución de Samuel: ',con_samu)
+print('Los valores de la convolución de Santiago: ',con_santi)
+print('Los valores de la convolución de Salome: ',con_salo)
+```
+Se grafican los datos obtenidos de la convolución mediante el comando *plot*, se ajusta el tamaño y el nombre de los ejes.
+```bash
+#-----------------------
+#CONVOLUCION SALO
+#-----------------------
+plt.figure(figsize=(12,8))
+plt.stem(con_salo)
+plt.title('Convolución - Salome')
+plt.xlabel('Cantidad de datos')
+plt.ylabel('g[n]')
+plt.grid()
+plt.show()
+
+#-----------------------
+#CONVOLUCION SAMU
+#-----------------------
+plt.figure(figsize=(12,8))
+plt.stem(con_samu)
+plt.title('Convolución - Samuel')
+plt.xlabel('Cantidad de datos')
+plt.ylabel('g[n]')
+plt.grid()
+plt.show()
+
+#-----------------------
+#CONVOLUCION SANTI
+#-----------------------
+plt.figure(figsize=(12,8))
+plt.stem(con_santi)
+plt.title('Convolución - Santiago')
+plt.xlabel('Cantidad de datos')
+plt.ylabel('g[n]')
+plt.grid()
+plt.show()
+```
+El resultado obtenido de las graficas es:
 **Convolución de Samuel E. Velandia**
+
+![image](https://github.com/user-attachments/assets/8723165a-ca55-4482-ac3f-78e1e2c7f58c)
+
+
 **Convolución de Santiago E. Diaz**
+
+![image](https://github.com/user-attachments/assets/739e7924-3c07-487b-98bf-01242d9ac4bf)
+
 **Convolución de Salome Ortega**
+![image](https://github.com/user-attachments/assets/992ec216-8833-4d00-8bd2-0c39ae98be59)
+
 ### Grafica de la señal.
 
 - En la base de datos de Physionet se escogió la señal “emg_neuropathy.dat” y “a04.emg_neuropathy” del estudio "Examples of Electromyograms", para que el código pueda leer correctamente los archivos es necesario que se encuentren dentro de la misma carpeta del proyecto.
