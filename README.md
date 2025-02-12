@@ -173,7 +173,7 @@ Puesto que la correclacion es 0.000 significa que no hay relacion lineal. Despue
 
 Como se observa en el gráfico y en el coeficiente de correlación de Pearson es 0.000 esto se debe a que las dos señales estan desfasadas 90°, estadisticamente los cambios en una señal no estan relacionados linealmente con los cambios en la otra. 
 
-### Señal De Electromiografía (EMG)
+## Señal De Electromiografía (EMG)
 
 En la base de datos de Physionet se escogió la señal “emg_neuropathy.dat” y “a04.emg_neuropathy” del estudio "Examples of Electromyograms". La señal en cuanto a su clasificacion es continua en su formato natural, ya que esta definida para todos los instantes de tiempo. No obstante, puesto que se encuentra en en formato digital la señal es discreta gracias al proceso de muestreo que requieren los archivos .dat, impar debido a que mantiene asimetria natural y no periodica a causa de que no tiene un patrón repetitivo regular por la variabilidad en la activacion muscular. Para que el código pueda leer correctamente los archivos es necesario que se encuentren dentro de la misma carpeta del proyecto.
 
@@ -223,7 +223,7 @@ limited_time = np.arange(max_samples)/fs
 channel_data = limited_signal[:, 0]
 ```
 
-## Transformada de Fourier
+### Transformada de Fourier
 Esta nos permite convertir una señal del dominio del tiempo al dominio de la frecuencia, util para saber que frecuencias componen una señal,
 en el caso de la medicina y la ingeniera biomedica, es fundamental en la identificación de patrones anormales, mas especificamente en electromiografia nos ayuda a identificar patrones de activación, relacionados a diferentes patologias.
 
