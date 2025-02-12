@@ -256,6 +256,7 @@ print(f"• Frecuencia Mediana: {frec_mediana:.2f} Hz")
 print(f"• Desviación Estándar: {desviacion:.2f} Hz")
 print("-"*50 + "\n")
 ```
+
 Del codigo anterior se obtivieron los siguientes datos estadisticos:
 • Frecuencia Media: 696.39 Hz
 • Frecuencia Mediana: 573.80 Hz
@@ -275,7 +276,10 @@ plt.xlim(0, 500)
 plt.tight_layout()
 plt.show()
 ```
+
+
 Se obtuvo la siguiente grafica.
+
 
 ![image](https://github.com/user-attachments/assets/9a370021-604d-4a91-87bc-aaa78205dbfc)
 
