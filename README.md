@@ -29,6 +29,12 @@ Para el calculo se multiplicaron cada una de las filas por las columnas y poster
 El eje x generalmente representa el tiempo o la posicion de la señal de entrada, mientras que el eje y muestra la amplitud de la señal resultante, dicha amplitud es la suma ponderada de la señal de entrada y la respuesta del sistema a esta, mostrando como el sistema transforma la señal.
 
 ### Valores De La Convolución y Grafica (Python)
+Se emplearon las bibliotecas *matplotlib.pyplot* y *numpy*, la primera cumple la función de graficar las convoluciones y la segunda de todos los calculos matematicos necesarios. 
+```bash
+import matplotlib.pyplot as plt
+import numpy as np
+
+```
 **Convolución de Samuel E. Velandia**
 **Convolución de Santiago E. Diaz**
 **Convolución de Salome Ortega**
