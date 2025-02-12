@@ -11,10 +11,12 @@
 - Se colocó un electrodo de aguja concéntrica de 25 mm en el músculo tibial anterior de cada sujeto. Luego se pidió al paciente que flexionara suavemente el pie contra resistencia. El electrodo de aguja se reposicionó hasta que se identificaron potenciales de la unidad motora con un tiempo de aumento rápido. Luego se recogieron datos durante varios segundos, momento en el que se pidió al paciente que se relajara y se retiró la aguja.
 ## Convolución
 Se escogio como el sistema *h[n]* cada dígito del código de cada estudiante y para la señal *x[n]* cada dígito de su cedula, con el fin de encontrar la señal resultante *y[n]* de la convolución. Se encontraron los valores y la grafica de *y[n]* a mano, al igual que con la interfaz de Python.
-### Valores De La Convolución y Grafica (a Mano)
 
+### Valores De La Convolución y Grafica (a Mano)
+Para el calculo se multiplicaron cada una de las filas por las columnas y posteriormente se sumaron los datos en diagonales, obteniendo al final 15 valores para la convolucion *y[n]*. Al elaborar la grafica se tomo como eje x la cantidad de datos obtenidos, es decir, 15 datos y como eje x los valores de la señal *y[n]*.
 **Convolución de Samuel E. Velandia**
 ![Imagen de WhatsApp 2025-02-05 a las 11 44 38_65214d87](https://github.com/user-attachments/assets/01c5b06f-6195-40f2-8c51-f8ac9c71529e)
+
 **Convolución de Santiago E. Diaz**
 ![image](https://github.com/user-attachments/assets/cb7af520-97fd-4925-8fe7-8069e3184d38)
 ![image](https://github.com/user-attachments/assets/5f6c43dd-1f94-4bef-978e-5eb9b4f80491)
@@ -23,6 +25,12 @@ Se escogio como el sistema *h[n]* cada dígito del código de cada estudiante y 
 ![image](https://github.com/user-attachments/assets/7c078541-92dc-42aa-9b91-81dec51f5f84)
 ![image](https://github.com/user-attachments/assets/a22bcc9d-5a65-4ecc-82d2-4de8dc2b4818)
 
+El eje x generalmente representa el tiempo o la posicion de la señal de entrada, mientras que el eje y muestra la amplitud de la señal resultante, dicha amplitud es la suma ponderada de la señal de entrada y la respuesta del sistema a esta, mostrando como el sistema transforma la señal.
+
+### Valores De La Convolución y Grafica (Python)
+**Convolución de Samuel E. Velandia**
+**Convolución de Santiago E. Diaz**
+**Convolución de Salome Ortega**
 ### Grafica de la señal.
 
 - En la base de datos de Physionet se escogió la señal “emg_neuropathy.dat” y “a04.emg_neuropathy” del estudio "Examples of Electromyograms", para que el código pueda leer correctamente los archivos es necesario que se encuentren dentro de la misma carpeta del proyecto.
