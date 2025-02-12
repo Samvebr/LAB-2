@@ -223,10 +223,53 @@ limited_time = np.arange(max_samples)/fs
 channel_data = limited_signal[:, 0]
 ```
 
-### Transformada de Fourier
+### Transformada de Fourier Y Densidad Espectral 
+**Transformada Rapida DE Fourier (FFT)**
 Esta nos permite convertir una señal del dominio del tiempo al dominio de la frecuencia, util para saber que frecuencias componen una señal,
 en el caso de la medicina y la ingeniera biomedica, es fundamental en la identificación de patrones anormales, mas especificamente en electromiografia nos ayuda a identificar patrones de activación, relacionados a diferentes patologias.
 
+Con el fin de encontrar la transformada rapida de fourier (FFT) se mplearon las siguientes funciones:
+1. **fft_signal=no.fft.fft(channel_data)**: este comando aplica la transformada rapida de Fourier al canal especificado dentro de los parametros, en este caso *channel_data*.
+2. **Frequencies=np.fft.fftfreq(len(channel_data),1/fs)**: la función calcula las frecuencias correspondientes a cada punto de *ff_signal*. El primer argumento de la función *len(channel_data)* lee el numero de muestras de la señal y *1/fs* es el intervalo de muestreo de la señal.
+3. **haslf_N=len(channel_data)//2**: Calcula el numero total de muestras de la mitad positiva. Puesto que FFT de una señal real es simetrica, la segunda mitad es el espejo de la primera, y solo se necesita la mitad del espectro para el analisis.
+4. **fft_magnitude=np.abs(fft_signal[:half_N]/half_N**: Calcula la magnitud normalizada de la transformada de Fourier, la función toma la primera mitad de la transformada, calcula la magnitud en valor absoluto y normaliza la magnitud dividiendo por el numero todas de muestras.
+````bash
+fft_signal = np.fft.fft(channel_data)
+frequencies = np.fft.fftfreq(len(channel_data), 1/fs)
+half_N = len(channel_data) // 2
+fft_magnitude = np.abs(fft_signal[:half_N])/half_N
+frequencies = frequencies[:half_N]
+````
+**Densidad Espectral**
+La PSD describe la distribucion de la energia o potencia en función de una señal para esto  se grafica la densidad espectral derivada de la Transformada de Fourier con la funcion plt.semilogy que calcula la densidad espectral de potencia utilizando el metodo de Welch y se divide la señal en con el parametro *nperseg=1024* que divide la señal en segmentos de 1024 muestras.
+
+Posteriormente se grafica el espectro de Fourier con el comando *plt.plot* y de parametros la frequencia y la magnitud normalizada, ademas se colocaron los nombres de los ejes.Dando como resultado la siguiente grafica.
+```bash
+# Espectro de Fourier
+plt.subplot(3, 1, 2)
+plt.plot(frequencies, fft_magnitude, 'r')
+plt.title('Espectro de Frecuencias')
+plt.xlabel('Frecuencia (Hz)')
+plt.ylabel('Amplitud')
+plt.grid()
+plt.xlim(0, 500)
+
+# Densidad espectral
+plt.subplot(3, 1, 3)
+plt.semilogy(*welch(channel_data, fs, nperseg=1024), 'g')
+plt.title('Densidad Espectral de Potencia (PSD)')
+plt.xlabel('Frecuencia (Hz)')
+plt.ylabel('Potencia (dB/Hz)')
+plt.grid()
+plt.xlim(0, 500)
+
+plt.tight_layout()
+plt.show()
+````
+** Grafica De La Transformada de Fourier Y Densidad Espectral**
+![image](https://github.com/user-attachments/assets/e5af4e98-25d7-4231-a18a-1897dd55f671)
+
+Como se puede observar en la gafica anterior la señal EMG muestra fluctuaciones tipicas de una actividad muscular, el espectro de sus frecuencia concentra la mayor energia en el intervalo en tre 0 y 200 Hz, reduciendose en frecuencias mas altas,lo que es comunmente normal para señales musculares. la PDS confirma mayor potencia en frecuencias bajas, indicando una señal adecuada para analizar.
 
 ### Estadisticos Descriptivos en Función de la Frecuencia
 Para esta parte del laboratorio se calcuraron los estadisticos descriptivos en función de la frecuencia, es decir, se calculo la media, la mediana, la desviacione estandar y el Histograma de frecuencias.
@@ -287,8 +330,12 @@ plt.show()
 
 Se obtuvo la siguiente grafica.
 
-![image](https://github.com/user-attachments/assets/80502e72-3e53-4586-b9d6-45af0820f691)
+![image](https://github.com/user-attachments/assets/3550f828-e860-4d2c-b6f9-d787fd0127b8)
 
+Se observa que la mayor densidad de frecuencias se concentra entre 100 y 250 Hz, indicando que en este rango se encuentra la mayor parte de la energia de la señal. Hacia frecuencias mas altas o mas bajas, la densidad disminuye, esto sugiere que la señal presenta componentes significativos en el rango medio de frecuencias.
+
+
+## Bibliografía
 
 
 
