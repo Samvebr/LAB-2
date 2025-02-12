@@ -262,8 +262,11 @@ print("-"*50 + "\n")
 `````
 
 Del codigo anterior se obtivieron los siguientes datos estadisticos:
+
 • Frecuencia Media: 696.39 Hz
+
 • Frecuencia Mediana: 573.80 Hz
+
 • Desviación Estándar: 514.00 Hz
 
 A fin de conseguir el histograma para visualizar la distrubución de frecuencias de la señal en el dominio de la misma, empleando los datos de las magnitudes obtenidas de la transformada de Fourier, se adecuo el tamño de grafica y con *plt.hist* se establecieron los parametros de *frequencie* que corresponde a cada punto de la magnitud de la transformada, *bins* define el numero total de intervalos y *weights=fft_magnitude* que pondera las barras del histograma de acuerdo a la magnitud de la transformada.
