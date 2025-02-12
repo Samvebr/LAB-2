@@ -9,8 +9,13 @@
 ### Metodo de adquisición
 
 - Se colocó un electrodo de aguja concéntrica de 25 mm en el músculo tibial anterior de cada sujeto. Luego se pidió al paciente que flexionara suavemente el pie contra resistencia. El electrodo de aguja se reposicionó hasta que se identificaron potenciales de la unidad motora con un tiempo de aumento rápido. Luego se recogieron datos durante varios segundos, momento en el que se pidió al paciente que se relajara y se retiró la aguja.
+## Convolución
+Se escogio como el sistema *h[n]* cada dígito del código de cada estudiante y para la señal *x[n]* cada dígito de su cedula, con el fin de encontrar la señal resultante *y[n]* de la convolución. Se encontraron los valores y la grafica de *y[n]* a mano, al igual que con la interfaz de Python.
+### Valores De La Convolución y Grafica (a Mano)
+![Imagen de WhatsApp 2025-02-05 a las 11 44 38_65214d87](https://github.com/user-attachments/assets/01c5b06f-6195-40f2-8c51-f8ac9c71529e)
 
-## Grafica de la señal.
+
+### Grafica de la señal.
 
 - En la base de datos de Physionet se escogió la señal “emg_neuropathy.dat” y “a04.emg_neuropathy” del estudio "Examples of Electromyograms", para que el código pueda leer correctamente los archivos es necesario que se encuentren dentro de la misma carpeta del proyecto.
 
