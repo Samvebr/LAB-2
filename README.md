@@ -113,6 +113,69 @@ El resultado obtenido de las graficas es:
 **Convolución de Salome Ortega**
 ![image](https://github.com/user-attachments/assets/992ec216-8833-4d00-8bd2-0c39ae98be59)
 
+## Correlación entre dos señales 
+Se realizo la correlacion entre las señales 𝑥1[𝑛𝑇𝑠] = cos(2𝜋100𝑛𝑇𝑠) y 𝑥2[𝑛𝑇𝑠] = sin(2𝜋100𝑛𝑇𝑠) pra el intervalo 𝑎 0 ≤ 𝑛 < 9 para un periodo de Ts= 1.25𝑚s. Para la elaboracion se necesitan las bilbiotecas *numpy* (calculos matematicos), *matplotlib.pyplot* (para realizar la grafica), *pandas* (analisis y manipulacion de datos) y *scipy.stats* (el analisis estadisticos y probabilisticos).
+
+```bash
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+from scipy.stats import pearsonr
+```
+
+Se definieron los parametros iniciales para ambas señales *N* como el numero de muestras, *z* que hace referencia al periodo en segundos y *f* como la frecuencia obtenida mediante el inverso del periodo *(1/z)*.
+
+``` bash
+# Definir parámetros
+N = 9  # Número de muestras
+z = 0.00125
+f = 100  # Frecuencia en Hz
+```
+Mediante la libreria *numpy* se define el eje de tiempo con la intruccion *arange* y como parametro el el numero maximo de muestras. Y se calculan las señales dadas por el ejercicio.
+
+``` bash
+n = np.arange(N)  # n = [0, 1, 2, ..., N-1]
+# Calcular las señales
+y_seno = np.sin(2 * np.pi * f * n * z)
+y_coseno = np.cos(2 * np.pi * f * n * z)
+```
+Para calcular la correlación de ambas señales se utiliza la Correlación de Pearson, que permite medir la relacion lineal entre dos variables cuantitativas. Se emplea la libreria *scipy.stats* que lo calcula el coeficiente de correlación de Pearson y el valor p, que indica si la correlación estaística es significativa, un valor p bajo sugiere que la correlacion no es debida al azar. Posteriormenete se crea un *DataFrame* con la cantidad de datos o posicion y las dos señales dadas por el ejercicio, para un analisis y proceso de representación mas simple.
+
+```bash
+# Calcular la correlación de Pearson
+correlation_coefficient, p_value = pearsonr(y_seno, y_coseno)
+
+# Crear la tabla con pandas
+df = pd.DataFrame({
+    'n': n,
+    'Seno': y_seno,
+    'Coseno': y_coseno
+})
+```
+Se muestra en consola la tabla de valores creada a través del *DataFrame* y también la correlacion entre las dos funciones (seno y coseno)
+
+```bash
+# Mostrar la tabla en la consola
+print("Tabla de valores de Seno y Coseno:")
+print(df)
+
+# Mostrar el coeficiente de correlación de Pearson
+print(f"\n Correlación de Pearson entre seno y coseno: {correlation_coefficient:.4f}")
+```
+Obteniendo los siguientes resultados:
+
+![image](https://github.com/user-attachments/assets/7a75e91d-6d6f-45f5-84b5-148df67b95b1)
+
+Correlación de Pearson entre seno y coseno: 0.0000
+Puesto que la correclacion es 0.000 significa que no hay relacion lineal. Despues se toman los valores de la tabla anterior y se grafican las señales con el comando *stem* para la señal discreta posterioemente se establece el tamaño *plt.figure(figsize)*, las funciones a graficar *plt.stem* y las etiquetas de los ejes y del titulo, como se presenta a continuación.
+
+![image](https://github.com/user-attachments/assets/0b93ae71-e439-412c-991f-1b3e28cd45c5)
+
+
+
+
+
+
 ### Grafica de la señal.
 
 - En la base de datos de Physionet se escogió la señal “emg_neuropathy.dat” y “a04.emg_neuropathy” del estudio "Examples of Electromyograms", para que el código pueda leer correctamente los archivos es necesario que se encuentren dentro de la misma carpeta del proyecto.
