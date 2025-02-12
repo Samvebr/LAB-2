@@ -340,7 +340,7 @@ Se observa que la mayor densidad de frecuencias se concentra entre 100 y 250 Hz,
 ## Bibliografía
 “Análisis de señales”. Henry Roncacio. Accedido el 12 de febrero de 2025. [En línea]. Disponible: http://localhost:8890/notebooks/Representación%20de%20señales%20tiempo%20y%20frecuencia.ipynb
 
-
+Señales y Sistemas - 2. edición. McGraw-Hill, 2013.
 
 
 
